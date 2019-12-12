@@ -17,7 +17,6 @@ const serializeNote = note => ({
 notesRouter
   .route('/')
   .get((req, res, next) => {
-    console.log(req.body)
     const knexInstance = req.app.get('db')
     NotesService.getAllNotes(knexInstance)
       .then(notes => {
@@ -82,27 +81,6 @@ notesRouter
       })
       .catch(next)
   })
-  // .patch(jsonParser, (req, res, next) => {
-  //   const { notename, modified, folderid, content } = req.body
-  //   const noteToUpdate = {notename, modified, folderid, content }
 
-  //   const numberOfValues = Object.values(noteToUpdate).filter(Boolean).length
-  //   if (numberOfValues === 0)
-  //     return res.status(400).json({
-  //       error: {
-  //         message: `Request body must contain either notename, modified, folderId, content`
-  //       }
-  //     })
-
-  //   NotesService.updateNote(
-  //     req.app.get('db'),
-  //     req.params.noteId,
-  //     noteToUpdate
-  //   )
-  //     .then(numRowsAffected => {
-  //       res.status(204).end()
-  //     })
-  //     .catch(next)
-  // })
 
 module.exports = notesRouter

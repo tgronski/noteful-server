@@ -24,7 +24,6 @@ foldersRouter
     FoldersService.getAllFolders(knexInstance)
 
       .then(results => {
-        console.log(knexInstance)
         res.status(200).json(results)
        
       })
@@ -74,37 +73,6 @@ foldersRouter
   .get((req, res, next) => {
     res.json(serializeFolders(res.folder))
   })
-  // .delete((req, res, next) => {
-  //   FoldersService.deleteFolder(
-  //     req.app.get('db'),
-  //     req.params.folderid
-  //   )
-  //     .then(numRowsAffected => {
-  //       res.status(204).end()
-  //     })
-  //     .catch(next)
-  // })
-  // .patch(jsonParser, (req, res, next) => {
-  //   const { foldername } = req.body
-  //   const folderToUpdate = { foldername }
-
-  //   const numberOfValues = Object.values(folderToUpdate).filter(Boolean).length
-  //   if (numberOfValues === 0)
-  //     return res.status(400).json({
-  //       error: {
-  //         message: `Request body must content 'folder name'`
-  //       }
-  //     })
-
-  //   FoldersService.updateFolder(
-  //     req.app.get('db'),
-  //     req.params.folderid,
-  //     folderToUpdate
-  //   )
-  //     .then(numRowsAffected => {
-  //       res.status(204).end()
-  //     })
-  //     .catch(next)
-  // })
+  
 
 module.exports = foldersRouter
